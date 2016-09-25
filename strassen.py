@@ -47,9 +47,6 @@ for i in range(n):
         b[i,j]=x
 d=strassen(a,b)[:n,:n]
 for i in range(n):
-    st=''
-    for j,x in enumerate(d[i,:]):
-        st=st+str(x)+' '
-    print(st)
+    print(*[d[i,j] for j in range (n)])
             
         
