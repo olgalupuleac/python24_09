@@ -3,13 +3,12 @@ import numpy as np
 
 
 def read_splitable_matrix(n):
-    k = 1
-    while k < n:
-        k *= 2
-    a = np.zeros((k, k), dtype=np.int)
+    n_padded = 1
+    while n_padded < n:
+        n_padded *= 2
+    a = np.zeros((n_padded, n_padded), dtype=np.int)
     for i in range(n):
-        for j, x in enumerate(map(int, input().split(' '))):
-            a[i, j] = x
+        a[i,:n]=list(map(int, input().split(' ')))
     return a
         
 
