@@ -1,6 +1,7 @@
 import sys
 import numpy as np
 
+
 def read_splitable_matrix(n):
     k = 1
     while k < n:
@@ -8,7 +9,7 @@ def read_splitable_matrix(n):
     a = np.zeros((k, k), dtype=np.int)
     for i in range(n):
         for j, x in enumerate(map(int, input().split(' '))):
-            a[i, j]=x
+            a[i, j] = x
     return a
         
 
@@ -40,7 +41,7 @@ def strassen(a, b):
 
 n = int(input())
 a = read_splitable_matrix(n)
-b = read_splitable_matrix(n)        
+b = read_splitable_matrix(n)      
 result = strassen(a, b)[:n, :n]
 for row in result:
     print(' '.join(map(str, row)))
