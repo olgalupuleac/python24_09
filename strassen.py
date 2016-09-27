@@ -1,9 +1,20 @@
 import sys
 import numpy as np
 
+def read_splitable_matrix(n):
+    k = 1
+    while k < n:
+        k *= 2
+    a = np.zeros((k, k), dtype=np.int)
+    for i in range(n):
+        for j, x in enumerate(map(int, input().split(' '))):
+            a[i, j]=x
+    return a
+        
 
 def split_in_quarters(a):
-    return np.hsplit(np.vsplit(a, 2)[0], 2) + np.hsplit(np.vsplit(a, 2)[1], 2)
+    a_left, a_right = np.vsplit(a, 2)
+    return np.hsplit(a_left, 2) + np.hsplit(a_right, 2)
 
 
 def strassen(a, b):
@@ -28,15 +39,8 @@ def strassen(a, b):
 
 
 n = int(input())
-k = 1
-while k < n:
-    k *= 2
-a = np.zeros((k, k), dtype=np.int)
-b = np.zeros((k, k), dtype=np.int)
-for i in range(n):
-    a[i, :] = list(map(int, input().split(' ')))
-for i in range(n):
-    b[i, :] = list(map(int, input().split(' ')))
-d = strassen(a, b)[:n, :n]
-for row in d:
+a = read_splitable_matrix(n)
+b = read_splitable_matrix(n)        
+result = strassen(a, b)[:n, :n]
+for row in result:
     print(' '.join(map(str, row)))
