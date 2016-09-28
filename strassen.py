@@ -8,7 +8,7 @@ def read_splitable_matrix(n):
         n_padded *= 2
     a = np.zeros((n_padded, n_padded), dtype=np.int)
     for i in range(n):
-        a[i,:n]=list(map(int, input().split(' ')))
+        a[i, :n] = list(map(int, input().split(' ')))
     return a
         
 
@@ -40,7 +40,7 @@ def strassen(a, b):
 
 n = int(input())
 a = read_splitable_matrix(n)
-b = read_splitable_matrix(n)      
+b = read_splitable_matrix(n)
 result = strassen(a, b)[:n, :n]
 for row in result:
     print(' '.join(map(str, row)))
